@@ -8,23 +8,26 @@ uses
   Vcl.Menus;
 
 type
-  TForm1 = class(TForm)
+  TformMain = class(TForm)
     imglogo: TImage;
     mm1: TMainMenu;
     mniFiles: TMenuItem;
-    mniClients: TMenuItem;
+    mnuClients: TMenuItem;
     mnuSuppliers: TMenuItem;
     mnuItems: TMenuItem;
     mniN1: TMenuItem;
     MnuClose: TMenuItem;
     mniOrders: TMenuItem;
-    mniMnuOrderForms: TMenuItem;
+    mnuOrderForms: TMenuItem;
     mnuDeliveryNotes: TMenuItem;
     A1: TMenuItem;
     mnuAbout: TMenuItem;
-    MnuParameters: TMenuItem;
     mniN2: TMenuItem;
     stat1: TStatusBar;
+    mnuConfiguration: TMenuItem;
+    mnuFamily: TMenuItem;
+    procedure FormCreate(Sender: TObject);
+    procedure mnuActionClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -32,10 +35,43 @@ type
   end;
 
 var
-  Form1: TForm1;
+  formMain: TformMain;
 
 implementation
 
+  uses consts_, Logs, frmListClients, frmListBase;
+
 {$R *.dfm}
+
+procedure TformMain.FormCreate(Sender: TObject);
+begin
+  mnuclients.Tag      := ACT_LIST_CLIENTS;
+  mnuSuppliers.Tag    := ACT_LIST_SUPPLIERS;
+  mnuFamily.Tag       := ACT_LIST_FAMILY;
+  mnuItems.Tag        := ACT_LIST_ITEMS;
+  mnuOrderForms.Tag   := ACT_ORDERS;
+  mnuDeliveryNotes.Tag:= ACT_DELIVERIES;
+  mnuConfiguration.Tag:= ACT_CONFIGURATION;
+  MnuClose.Tag        := ACT_CLOSE;
+  mnuAbout.Tag        := ACT_ABOUT;
+end;
+
+procedure TformMain.mnuActionClick(Sender: TObject);
+var id: integer;
+begin
+  case TMenuItem(Sender).Tag of
+
+  ACT_LIST_CLIENTS : TformListClients.ShowList(mdMaj, id);
+  ACT_LIST_SUPPLIERS:;
+  ACT_LIST_FAMILY:;
+  ACT_LIST_ITEMS:;
+  ACT_ORDERS:;
+  ACT_DELIVERIES:;
+  ACT_CONFIGURATION:;
+  ACT_CLOSE:;
+  ACT_ABOUT:;
+
+  end;
+end;
 
 end.

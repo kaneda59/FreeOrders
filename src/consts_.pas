@@ -12,6 +12,18 @@ const
                                    'StepAPI=0;SyncPragma=NORMAL;NoTXN=0;Timeout=;ShortNames=0;LongNames=0;' +
                                    'NoCreat=0;NoWCHAR=0;FKSupport=0;JournalMode=;LoadExt=;"';
 
+
+  // liste des actions
+  ACT_LIST_CLIENTS   = 1000;
+  ACT_LIST_SUPPLIERS = 1001;
+  ACT_LIST_FAMILY    = 1002;
+  ACT_LIST_ITEMS     = 1003;
+  ACT_ORDERS         = 1004;
+  ACT_DELIVERIES     = 1005;
+  ACT_CONFIGURATION  = 1006;
+  ACT_CLOSE          = 1007;
+  ACT_ABOUT          = 1008;
+
 var
 
   pathApp: string = '';

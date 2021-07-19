@@ -237,7 +237,7 @@ var qr: TADOQuery;
   end;
 
 begin
-  with AddQuery do
+  qr:= addQuery;
   try
     CreateVats;
     CreateSuppliers;
@@ -247,12 +247,13 @@ begin
     CreateOrderLines;
     CreateOrders;
   finally
-    Free;
+    FreeAndNil(qr);
   end;
 end;
 
 function TDonnees.InitDataBase: Boolean;
 begin
+  result:= False;
   filedatabasename:= pathData + ChangeFileExt(ExtractFileName(ParamStr(0)), '.db');
   if not FileExists(filedatabasename) then
     CreateDataBase;
@@ -267,7 +268,7 @@ begin
       CheckScriptDataBase;
   except
     on e: Exception do
-
+      log.AddError('initdatabase', e.Message);
   end;
 end;
 

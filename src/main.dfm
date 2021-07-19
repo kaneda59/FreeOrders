@@ -1,4 +1,4 @@
-object Form1: TForm1
+object formMain: TformMain
   Left = 0
   Top = 0
   Caption = 'AuBonPlan '#169'2016 - gestion des commandes'
@@ -13,6 +13,7 @@ object Form1: TForm1
   Menu = mm1
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object imglogo: TImage
@@ -13151,54 +13152,65 @@ object Form1: TForm1
     Height = 19
     Panels = <>
     SimplePanel = True
-    ExplicitLeft = 464
-    ExplicitTop = 280
-    ExplicitWidth = 0
   end
   object mm1: TMainMenu
     Left = 328
     Top = 40
     object mniFiles: TMenuItem
       Caption = '&Fichiers'
-      object mniClients: TMenuItem
+      object mnuClients: TMenuItem
         Caption = '&Clients'
         ShortCut = 113
+        OnClick = mnuActionClick
       end
       object mnuSuppliers: TMenuItem
         Caption = 'F&ournisseurs'
         ShortCut = 114
+        OnClick = mnuActionClick
+      end
+      object mnuFamily: TMenuItem
+        Caption = 'Familles'
+        ShortCut = 115
+        OnClick = mnuActionClick
       end
       object mnuItems: TMenuItem
         Caption = 'Produits'
-        ShortCut = 115
+        ShortCut = 116
+        OnClick = mnuActionClick
       end
       object mniN1: TMenuItem
         Caption = '-'
       end
-      object MnuParameters: TMenuItem
+      object mnuConfiguration: TMenuItem
         Caption = 'Configuration'
+        ShortCut = 117
+        OnClick = mnuActionClick
       end
       object mniN2: TMenuItem
         Caption = '-'
       end
       object MnuClose: TMenuItem
         Caption = '&Quitter'
-        ShortCut = 116
+        ShortCut = 118
+        OnClick = mnuActionClick
       end
     end
     object mniOrders: TMenuItem
       Caption = '&Commandes'
-      object mniMnuOrderForms: TMenuItem
+      object mnuOrderForms: TMenuItem
         Caption = 'Bons de commandes'
+        ShortCut = 119
       end
       object mnuDeliveryNotes: TMenuItem
         Caption = 'Bons de livraisons'
+        ShortCut = 120
       end
     end
     object A1: TMenuItem
       Caption = 'Aide'
       object mnuAbout: TMenuItem
         Caption = 'A propos'
+        ShortCut = 121
       end
     end
   end

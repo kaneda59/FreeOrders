@@ -85,7 +85,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="main.pas">
-            <Form>Form1</Form>
+            <Form>formMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Module.pas">
@@ -96,6 +96,22 @@
         <DCCReference Include="consts_.pas"/>
         <DCCReference Include="classes\classebase.pas"/>
         <DCCReference Include="Logs.pas"/>
+        <DCCReference Include="views\frmBase.pas">
+            <Form>FormBase</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\frmListBase.pas">
+            <Form>FormBaseList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\frmBaseInput.pas">
+            <Form>formBaseInput</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\clients\frmListClients.pas">
+            <Form>formListClients</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
