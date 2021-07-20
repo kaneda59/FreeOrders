@@ -13178,12 +13178,16 @@ object formMain: TformMain
         ShortCut = 116
         OnClick = mnuActionClick
       end
+      object mnuVATs: TMenuItem
+        Caption = '&TVAs'
+        ShortCut = 117
+      end
       object mniN1: TMenuItem
         Caption = '-'
       end
       object mnuConfiguration: TMenuItem
         Caption = 'Configuration'
-        ShortCut = 117
+        ShortCut = 118
         OnClick = mnuActionClick
       end
       object mniN2: TMenuItem
@@ -13191,7 +13195,7 @@ object formMain: TformMain
       end
       object MnuClose: TMenuItem
         Caption = '&Quitter'
-        ShortCut = 118
+        ShortCut = 119
         OnClick = mnuActionClick
       end
     end
@@ -13199,18 +13203,18 @@ object formMain: TformMain
       Caption = '&Commandes'
       object mnuOrderForms: TMenuItem
         Caption = 'Bons de commandes'
-        ShortCut = 119
+        ShortCut = 120
       end
       object mnuDeliveryNotes: TMenuItem
         Caption = 'Bons de livraisons'
-        ShortCut = 120
+        ShortCut = 121
       end
     end
     object A1: TMenuItem
       Caption = 'Aide'
       object mnuAbout: TMenuItem
         Caption = 'A propos'
-        ShortCut = 121
+        ShortCut = 122
       end
     end
   end

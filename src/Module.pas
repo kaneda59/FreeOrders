@@ -3,7 +3,7 @@ unit Module;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs;
+  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes;
 
 
 
@@ -131,6 +131,7 @@ var qr: TADOQuery;
       SQL.Add('CREATE TABLE IF NOT EXISTS "Family" (');
       SQL.Add(' "id"            INTEGER PRIMARY KEY AUTOINCREMENT,');
       SQL.Add(' "Label"         VARCHAR(125),');
+      SQL.Add(' "Code"          VARCHAR(20),');
       SQL.Add(' "Description"   VARCHAR(125)');
       SQL.Add(')');
       try
@@ -155,9 +156,9 @@ var qr: TADOQuery;
       SQL.Add(' "paht"          REAL,');
       SQL.Add(' "pfht"          REAL,');
       SQL.Add(' "idvat"         INTEGER,');
-      SQL.Add(' "actif"       VARCHAR(125),');
-      SQL.Add(' "idfamily"         VARCHAR(20),');
-      SQL.Add(' "idSupplier"        VARCHAR(20)');
+      SQL.Add(' "actif"         VARCHAR(125),');
+      SQL.Add(' "idfamily"      VARCHAR(20),');
+      SQL.Add(' "idSupplier"    VARCHAR(20)');
       SQL.Add(')');
       try
         ExecSQL;

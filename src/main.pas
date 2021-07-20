@@ -26,6 +26,7 @@ type
     stat1: TStatusBar;
     mnuConfiguration: TMenuItem;
     mnuFamily: TMenuItem;
+    mnuVATs: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure mnuActionClick(Sender: TObject);
   private
@@ -39,7 +40,8 @@ var
 
 implementation
 
-  uses consts_, Logs, frmListClients, frmListBase;
+  uses consts_, Logs, frmListClients, frmListSuppliers,
+       frmListFamily, frmListItems, frmListVats, frmListBase;
 
 {$R *.dfm}
 
@@ -52,6 +54,7 @@ begin
   mnuOrderForms.Tag   := ACT_ORDERS;
   mnuDeliveryNotes.Tag:= ACT_DELIVERIES;
   mnuConfiguration.Tag:= ACT_CONFIGURATION;
+  mnuVATs.Tag         := ACT_LIST_VATS;
   MnuClose.Tag        := ACT_CLOSE;
   mnuAbout.Tag        := ACT_ABOUT;
 end;
@@ -61,15 +64,16 @@ var id: integer;
 begin
   case TMenuItem(Sender).Tag of
 
-  ACT_LIST_CLIENTS : TformListClients.ShowList(mdMaj, id);
-  ACT_LIST_SUPPLIERS:;
-  ACT_LIST_FAMILY:;
-  ACT_LIST_ITEMS:;
-  ACT_ORDERS:;
-  ACT_DELIVERIES:;
-  ACT_CONFIGURATION:;
-  ACT_CLOSE:;
-  ACT_ABOUT:;
+  ACT_LIST_CLIENTS  : TformListClients.ShowList(mdMaj, id);
+  ACT_LIST_SUPPLIERS: TformListSuppliers.ShowList(mdMaj, id);
+  ACT_LIST_FAMILY   : TformListFamily.ShowList(mdMaj, id);
+  ACT_LIST_ITEMS    : TformListItems.ShowList(mdMaj, id);
+  ACT_LIST_VATS     : TFormListVats.ShowList(mdMaj, id);
+  ACT_ORDERS        : ;
+  ACT_DELIVERIES    : ;
+  ACT_CONFIGURATION : ;
+  ACT_CLOSE         : Close;
+  ACT_ABOUT         : ;
 
   end;
 end;

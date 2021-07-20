@@ -10,7 +10,11 @@ uses
   frmBase in 'views\frmBase.pas' {FormBase},
   frmListBase in 'views\frmListBase.pas' {FormBaseList},
   frmBaseInput in 'views\frmBaseInput.pas' {formBaseInput},
-  frmListClients in 'views\clients\frmListClients.pas' {formListClients};
+  frmListClients in 'views\clients\frmListClients.pas' {formListClients},
+  frmListSuppliers in 'views\suppliers\frmListSuppliers.pas' {formListSuppliers},
+  frmListFamily in 'views\family\frmListFamily.pas' {formListFamily},
+  frmListItems in 'views\items\frmListItems.pas' {formListItems},
+  frmListVats in 'views\vats\frmListVats.pas' {FormListVats};
 
 {$R *.res}
 

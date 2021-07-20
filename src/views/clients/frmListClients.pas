@@ -13,6 +13,7 @@ type
     { Déclarations privées }
   public
     { Déclarations publiques }
+    procedure ConfigureGrid; override;
     class function ShowList(const modeList: TModeList; var id: Integer): Boolean;
   end;
 
@@ -26,6 +27,22 @@ implementation
 
 { TformListClients }
 
+procedure TformListClients.ConfigureGrid;
+begin
+  inherited;
+  dbgrd.Columns[0].Visible:= False;
+  dbgrd.Columns[1].Title.Caption:= 'Prénom';
+  dbgrd.Columns[1].Width:= 200;
+  dbgrd.Columns[2].Title.Caption:= 'Nom';
+  dbgrd.Columns[2].Width:= 200;
+  dbgrd.Columns[3].Title.Caption:= 'Adresse';
+  dbgrd.Columns[3].Width:= 200;
+  dbgrd.Columns[4].Title.Caption:= 'Code Postal';
+  dbgrd.Columns[4].Width:= 100;
+  dbgrd.Columns[5].Title.Caption:= 'Ville';
+  dbgrd.Columns[5].Width:= 200;
+end;
+
 class function TformListClients.ShowList(const modeList: TModeList;
   var id: Integer): Boolean;
 begin
@@ -35,7 +52,7 @@ begin
     formListClients.current_modeList:= modeList;
     formListClients.qryList.Connection:= Donnees.connection;
     formListClients.qryList.SQL.Clear;
-    formListClients.qryList.SQL.Add('SELECT * FROM Clients');
+    formListClients.qryList.SQL.Add('SELECT id, FirstName, LastName, Address, ZipCode, City FROM Clients');
     Result := formListClients.ShowModal = mrOk;
     if Result and (modeList=mdSelection) then
       id:= formListClients.qryList.FieldByName('id').AsInteger;

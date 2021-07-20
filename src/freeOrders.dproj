@@ -112,6 +112,22 @@
             <Form>formListClients</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="views\suppliers\frmListSuppliers.pas">
+            <Form>formListSuppliers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\family\frmListFamily.pas">
+            <Form>formListFamily</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\items\frmListItems.pas">
+            <Form>formListItems</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\vats\frmListVats.pas">
+            <Form>FormListVats</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

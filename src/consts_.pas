@@ -23,11 +23,12 @@ const
   ACT_CONFIGURATION  = 1006;
   ACT_CLOSE          = 1007;
   ACT_ABOUT          = 1008;
+  ACT_LIST_VATS      = 1009;
 
 var
 
-  pathApp: string = '';
-  pathData: string = '';
+  pathApp   : string = '';
+  pathData  : string = '';
   pathSystem: string = '';
 
 procedure InitPath;
