@@ -112,6 +112,47 @@
             <Form>formListClients</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="views\suppliers\frmListSuppliers.pas">
+            <Form>formListSuppliers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\family\frmListFamily.pas">
+            <Form>formListFamily</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\items\frmListItems.pas">
+            <Form>formListItems</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\vats\frmListVats.pas">
+            <Form>FormListVats</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\clients\frmInputClient.pas">
+            <Form>formInputClient</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="classes\module.client.pas"/>
+        <DCCReference Include="classes\module.supplier.pas"/>
+        <DCCReference Include="classes\module.vat.pas"/>
+        <DCCReference Include="classes\module.family.pas"/>
+        <DCCReference Include="classes\module.items.pas"/>
+        <DCCReference Include="views\family\frmInputFamily.pas">
+            <Form>formInputFamily</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\suppliers\frmInputSupplier.pas">
+            <Form>formInputSupplier</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\items\frmInputItem.pas">
+            <Form>formInputItems</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="views\vats\frmInputVat.pas">
+            <Form>formInputVat</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

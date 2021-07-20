@@ -54,8 +54,10 @@ type
       Fid: integer;
       FDescription: string;
       FLabel: string;
+      FCode: string;
     public
       property _id: integer read Fid write Fid;
+      property _code: string read FCode write FCode;
       property _Label: string read FLabel write FLabel;
       property _Description: string read FDescription write FDescription;
     end;
@@ -77,9 +79,9 @@ type
       property _id: integer read Fid write Fid;
       property _Label: string read FLabel write FLabel;
       property _description: string read FDescription write FDescription;
-      property _pvht: double read Fpvht write Fpvht;  // prix de vente ht
-      property _paht: double read Fpaht write Fpaht;  // prix d'achat  ht
-      property _pfht: double read Fpfht write Fpfht;  // prix fournisseur ht;
+      property _pvht : double read Fpvht write Fpvht;  // prix de vente ht
+      property _paht : double read Fpaht write Fpaht;  // prix d'achat  ht
+      property _pfht : double read Fpfht write Fpfht;  // prix fournisseur ht;
       property _idvat: Integer read FidTVA write FidTVA;
       property _actif: Boolean read FActif write FActif;
       property _idfamily: integer read FIdFamily write FIdFamily;
