@@ -9,6 +9,8 @@ uses
 
 type
   TFormListVats = class(TFormBaseList)
+    procedure fltfldListtauxGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Déclarations privées }
   public
@@ -32,7 +34,12 @@ implementation
 procedure TFormListVats.ConfigureGrid;
 begin
   inherited;
-
+  dbgrd.Columns[0].Visible:= False;
+  dbgrd.Columns[1].Title.Caption:= 'Libellé';
+  dbgrd.Columns[1].Width:= 200;
+  dbgrd.Columns[2].Title.Caption:= 'Taux';
+  dbgrd.Columns[2].Width:= 100;
+  qryList.FieldByName('value').OnGetText:= fltfldListtauxGetText;
 end;
 
 procedure TFormListVats.ExecuteAction(const id: Integer);
@@ -44,6 +51,14 @@ begin
      300 : if messageDLG('voulez-vous supprimer ce taux de TVA ?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
              qryList.Delete;
   end;
+end;
+
+procedure TFormListVats.fltfldListtauxGetText(Sender: TField; var Text: string;
+  DisplayText: Boolean);
+begin
+  inherited;
+  if qryList.RecordCount>0 then
+    Text:= FormatFloat('0.00 %', Sender.Value);
 end;
 
 class function TFormListVats.ShowList(const modeList: TModeList;

@@ -24,7 +24,8 @@ uses
   frmInputFamily in 'views\family\frmInputFamily.pas' {formInputFamily},
   frmInputSupplier in 'views\suppliers\frmInputSupplier.pas' {formInputSupplier},
   frmInputItem in 'views\items\frmInputItem.pas' {formInputItems},
-  frmInputVat in 'views\vats\frmInputVat.pas' {formInputVat};
+  frmInputVat in 'views\vats\frmInputVat.pas' {formInputVat},
+  frmListOrders in 'views\orders\frmListOrders.pas' {formListOrders};
 
 {$R *.res}
 
@@ -34,5 +35,6 @@ begin
   Application.CreateForm(TDonnees, Donnees);
   Application.CreateForm(TformMain, formMain);
   Application.CreateForm(TformInputVat, formInputVat);
+  Application.CreateForm(TformListOrders, formListOrders);
   Application.Run;
 end.

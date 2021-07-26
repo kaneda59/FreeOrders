@@ -71,17 +71,17 @@ type
       FDescription: string;
       FActif: Boolean;
       Fpaht: double;
-      Fpfht: double;
       FIdSupplier: integer;
       FIdFamily: integer;
       FLabel: string;
+      FCode: string;
     public
       property _id: integer read Fid write Fid;
+      property _Code: string read FCode write FCode;
       property _Label: string read FLabel write FLabel;
       property _description: string read FDescription write FDescription;
       property _pvht : double read Fpvht write Fpvht;  // prix de vente ht
       property _paht : double read Fpaht write Fpaht;  // prix d'achat  ht
-      property _pfht : double read Fpfht write Fpfht;  // prix fournisseur ht;
       property _idvat: Integer read FidTVA write FidTVA;
       property _actif: Boolean read FActif write FActif;
       property _idfamily: integer read FIdFamily write FIdFamily;
@@ -136,6 +136,11 @@ type
     // état des commandes (en préparation, expédiée, en cours de livraison, livrée)
     TState = (stinpreparation, stShipped, stInProcessDelivered, stDelivered);
 
+const
+    StrState : array[TState] of string = ('en préparation', 'expédié', 'en livraison', 'livré');
+
+type
+
     // Commandes
     TOrders = class
     private
@@ -144,8 +149,10 @@ type
       FLines: TarrayOrderLines;
       FState: TState;
       FDate: TDateTime;
+      FCode: string;
     public
       property _id: integer read FId write FId;
+      property _Code: string read FCode write FCode;
       property _idClient: integer read FIdClient write FIdClient;
       property _date: TDateTime read FDate write FDate;
       property _stateOrder: TState read FState write FState;
