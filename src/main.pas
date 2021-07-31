@@ -40,7 +40,7 @@ var
 
 implementation
 
-  uses consts_, Logs, frmListClients, frmListSuppliers, frmListOrders,
+  uses consts_, Logs, frmListClients, frmListSuppliers, frmListOrders, frmAbout,
        frmListFamily, frmListItems, frmListVats, frmListBase;
 
 {$R *.dfm}
@@ -73,7 +73,7 @@ begin
   ACT_DELIVERIES    : ;
   ACT_CONFIGURATION : ;
   ACT_CLOSE         : Close;
-  ACT_ABOUT         : ;
+  ACT_ABOUT         : TformAbout.Execute;
 
   end;
 end;

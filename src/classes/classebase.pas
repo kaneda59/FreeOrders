@@ -125,8 +125,10 @@ type
       FId: integer;
       FIdItems: integer;
       FQte: double;
+      ForderId: Integer;
     public
       property _id: integer read FId write FId;
+      property _orderid: Integer read ForderId write FOrderId;
       property _idItems: integer read FIdItems write FIdItems;
       property _Qte: double read FQte write FQte;
       property _MtRem: double read FMtRem write FMtRem;

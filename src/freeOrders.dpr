@@ -25,7 +25,10 @@ uses
   frmInputSupplier in 'views\suppliers\frmInputSupplier.pas' {formInputSupplier},
   frmInputItem in 'views\items\frmInputItem.pas' {formInputItems},
   frmInputVat in 'views\vats\frmInputVat.pas' {formInputVat},
-  frmListOrders in 'views\orders\frmListOrders.pas' {formListOrders};
+  frmListOrders in 'views\orders\frmListOrders.pas' {formListOrders},
+  frmInputOrders in 'views\orders\frmInputOrders.pas' {formInputOrders},
+  module.orders in 'classes\module.orders.pas',
+  frmAbout in 'views\frmAbout.pas' {formAbout};
 
 {$R *.res}
 
@@ -34,7 +37,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDonnees, Donnees);
   Application.CreateForm(TformMain, formMain);
-  Application.CreateForm(TformInputVat, formInputVat);
-  Application.CreateForm(TformListOrders, formListOrders);
   Application.Run;
 end.

@@ -58,7 +58,7 @@ begin
     qry.Close;
   except
     on e: Exception do
-      Logs.log.AddError('Suppliers.Read', e.Message);
+      Logs.log.AddError('Family.Read', e.Message);
   end;
 end;
 

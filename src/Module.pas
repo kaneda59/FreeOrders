@@ -33,6 +33,10 @@ type
     ///  s'y connecter
     /// </summary>
     function InitDataBase: Boolean;
+    /// <summary>
+    ///  cette fonction permet de renvoyer le dernier id inséré en base pour une table donnée
+    /// </summary>
+    function getLastId(const tableName: string): integer;
   end;
 
 var
@@ -74,6 +78,19 @@ begin
 
   FormatSettings.DecimalSeparator:= '.';
   FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
+end;
+
+function TDonnees.getLastId(const tableName: string): integer;
+begin
+  with addQuery do
+  try
+    SQL.Add('SELECT MAX(id) as id FROM ' + tableName);
+    Open;
+    Result:= FieldByName('id').AsInteger;
+    Close;
+  finally
+    Free;
+  end;
 end;
 
 procedure TDonnees.CheckScriptDataBase;
@@ -207,6 +224,7 @@ var qr: TADOQuery;
       SQL.Clear;
       SQL.Add('CREATE TABLE IF NOT EXISTS "OrderLines" (');
       SQL.Add(' "id"            INTEGER PRIMARY KEY AUTOINCREMENT,');
+      SQL.Add(' "orderid"       INTEGER,');
       SQL.Add(' "idItems"       INTEGER,');
       SQL.Add(' "Qte"           DOUBLE,');
       SQL.Add(' "MtRem"         DOUBLE');
