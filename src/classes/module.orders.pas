@@ -1,5 +1,7 @@
 unit module.orders;
 
+{$M+}
+
 interface
 
   uses Winapi.Windows, System.SysUtils, Classes, classebase, Data.Win.ADODB;
@@ -58,8 +60,7 @@ end;
 }
 
 procedure TModule_orders.Read;
-var i: integer;
-    Lines: TarrayOrderLines;
+var Lines: TarrayOrderLines;
 begin
   fIsEmpty:= True;
   qry.SQL.Add('SELECT o.id as oid, o.code as ocode, o.idclient as oidclient, o.date as odate, o.stateorder as ostateorder,');

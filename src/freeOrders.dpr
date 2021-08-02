@@ -28,7 +28,9 @@ uses
   frmListOrders in 'views\orders\frmListOrders.pas' {formListOrders},
   frmInputOrders in 'views\orders\frmInputOrders.pas' {formInputOrders},
   module.orders in 'classes\module.orders.pas',
-  frmAbout in 'views\frmAbout.pas' {formAbout};
+  frmAbout in 'views\frmAbout.pas' {formAbout},
+  configuration in 'classes\configuration.pas',
+  frmInputConfiguration in 'views\frmInputConfiguration.pas' {formInputConfiguration};
 
 {$R *.res}
 

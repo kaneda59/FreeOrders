@@ -37,6 +37,7 @@ inherited formInputOrders: TformInputOrders
       Height = 200
       Align = alTop
       TabOrder = 0
+      ExplicitTop = -2
       object grpHeader: TGroupBox
         Left = 8
         Top = 8

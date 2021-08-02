@@ -3,7 +3,8 @@ unit Module;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes;
+  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes,
+  System.TypInfo, System.Variants;
 
 
 
@@ -44,7 +45,7 @@ var
 
 implementation
 
-  uses consts_, logs;
+  uses consts_, logs, configuration;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -69,6 +70,14 @@ begin
   end;
 end;
 
+function CheckValues(const default: Variant; value: Variant): variant;
+begin
+  result:= default;
+  if not varIsNull(value) then
+  if varToStr(value)<>'' then
+    result:= value;
+end;
+
 
 procedure TDonnees.DataModuleCreate(Sender: TObject);
 begin
@@ -76,8 +85,11 @@ begin
     MessageDLG('une erreur est survenue lors de l''initialisation de la base de données'#13#10 +
                'veuillez vérifier les logs',  mtError, [mbOK], 0);
 
-  FormatSettings.DecimalSeparator:= '.';
-  FormatSettings.ShortDateFormat:= 'dd/mm/yyyy';
+  FormatSettings.DecimalSeparator:= varToStr(CheckValues(FormatSettings.DecimalSeparator, configfile.settingFormat.Values['DecimalSeparator']))[1];
+  FormatSettings.ShortDateFormat := VarToStr(CheckValues(FormatSettings.ShortDateFormat, configfile.settingFormat.Values['ShortDateFormat']));
+  FormatSettings.CurrencyString  := VarToStr(CheckValues(FormatSettings.CurrencyString , configfile.settingFormat.Values['CurrencyString']));
+  FormatSettings.DateSeparator   := VarToStr(CheckValues(FormatSettings.DateSeparator, configfile.settingFormat.Values['DateSeparator']))[1];
+  FormatSettings.TimeSeparator   := varToStr(CheckValues(FormatSettings.TimeSeparator, configfile.settingFormat.Values['TimeSeparator']))[1];
 end;
 
 function TDonnees.getLastId(const tableName: string): integer;
@@ -277,11 +289,11 @@ end;
 function TDonnees.InitDataBase: Boolean;
 begin
   result:= False;
-  filedatabasename:= pathData + ChangeFileExt(ExtractFileName(ParamStr(0)), '.db');
+  filedatabasename:= configfile.connection.parameters.Values['filename'];// pathData + ChangeFileExt(ExtractFileName(ParamStr(0)), '.db');
   if not FileExists(filedatabasename) then
     CreateDataBase;
 
-  connection.ConnectionString := StringReplace(CNX_SQLITE_STR, '[filename]', filedatabasename, [rfReplaceAll]);
+  connection.ConnectionString := configfile.connection.fillConnectionString;//StringReplace(CNX_SQLITE_STR, '[filename]', filedatabasename, [rfReplaceAll]);
   connection.LoginPrompt:= False;
   try
     connection.Open();

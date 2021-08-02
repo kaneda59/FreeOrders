@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frmListBase, Data.DB, Data.Win.ADODB,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frmListBase, Data.DB, Data.Win.ADODB, System.UITypes,
   Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.ExtCtrls;
 
 type
@@ -14,7 +14,7 @@ type
   public
     { Déclarations publiques }
     procedure ConfigureGrid; override;
-    procedure ExecuteAction(const id: Integer); override;
+    procedure _ExecuteAction(const id: Integer); override;
     class function ShowList(const modeList: TModeList; var id: Integer): Boolean;
   end;
 
@@ -44,7 +44,7 @@ begin
   dbgrd.Columns[5].Width:= 200;
 end;
 
-procedure TformListClients.ExecuteAction(const id: Integer);
+procedure TformListClients._ExecuteAction(const id: Integer);
 begin
   inherited;
   case id of

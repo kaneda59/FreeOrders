@@ -41,7 +41,7 @@ var
 implementation
 
   uses consts_, Logs, frmListClients, frmListSuppliers, frmListOrders, frmAbout,
-       frmListFamily, frmListItems, frmListVats, frmListBase;
+       frmListFamily, frmListItems, frmListVats, frmListBase, frmInputConfiguration;
 
 {$R *.dfm}
 
@@ -71,7 +71,7 @@ begin
   ACT_LIST_VATS     : TFormListVats.ShowList(mdMaj, id);
   ACT_ORDERS        : TformListOrders.ShowList(mdMaj, id);
   ACT_DELIVERIES    : ;
-  ACT_CONFIGURATION : ;
+  ACT_CONFIGURATION : TformInputConfiguration.Execute;
   ACT_CLOSE         : Close;
   ACT_ABOUT         : TformAbout.Execute;
 

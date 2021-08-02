@@ -35,7 +35,7 @@ implementation
 procedure TformInputVat.edtValueKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  if not (Key in ['0'..'9', FormatSettings.DecimalSeparator, #8, #9]) then
+  if not CharInSet(Key, ['0'..'9', FormatSettings.DecimalSeparator, #8, #9]) then
     Key:= #0;
 end;
 

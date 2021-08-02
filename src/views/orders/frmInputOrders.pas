@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frmBaseInput, Vcl.StdCtrls,
   module.client, module.items, module.orders, module.vat, System.Math,
-  Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Grids;
+  Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Grids, System.UITypes;
 
 type
   TformInputOrders = class(TformBaseInput)
@@ -112,6 +112,7 @@ procedure TformInputOrders.FormCreate(Sender: TObject);
 begin
   inherited;
   IniGrid;
+  EmptyLines;
 end;
 
 procedure TformInputOrders.FormDestroy(Sender: TObject);
@@ -166,7 +167,6 @@ begin
       grid.Cells[5,i+1]:= FormatFloat('0.00', order.Orders._Lines[i]._MtRem);
       grid.Cells[6,i+1]:= FormatFloat('0.00', items.Items._pvht * order.Orders._Lines[i]._Qte);
 
-      totalTTC:= 0;
       totalTTC:= (items.Items._pvht * order.Orders._Lines[i]._Qte) - order.Orders._Lines[i]._MtRem;
       totalTTC:= totalTTC + (totalTTC * vat.Vat._value/100);
       totaltotal:= totaltotal + totalTTC;
@@ -212,7 +212,7 @@ end;
 procedure TformInputOrders.edtQteKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  if not (Key in ['0'..'9',#8, #9]) then
+  if not CharInSet(Key, ['0'..'9',#8, #9]) then
     Key:= #0;
 end;
 

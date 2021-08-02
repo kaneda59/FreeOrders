@@ -1,5 +1,7 @@
 unit module.family;
 
+{$M+}
+
 interface
 
   uses Winapi.Windows, System.SysUtils, Classes, classebase, Data.Win.ADODB;

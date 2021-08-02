@@ -38,7 +38,7 @@ type
   public
     { Déclarations publiques }
     procedure ConfigureGrid; virtual; abstract;
-    procedure ExecuteAction(const id: integer); virtual; abstract;
+    procedure _ExecuteAction(const id: integer); virtual; abstract;
     procedure UpdateData;
     property current_modeList: TModeList read FModeList write setModeList;
   end;
@@ -54,7 +54,7 @@ implementation
 procedure TFormBaseList.ActionClick(Sender: TObject);
 begin
   inherited;
-  ExecuteAction(TComponent(Sender).Tag);
+  _ExecuteAction(TComponent(Sender).Tag);
 end;
 
 procedure TFormBaseList.btnSearchClick(Sender: TObject);
