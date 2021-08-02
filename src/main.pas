@@ -40,7 +40,7 @@ var
 
 implementation
 
-  uses consts_, Logs, frmListClients, frmListSuppliers, frmListOrders, frmAbout,
+  uses consts_, Logs, frmListClients, frmListSuppliers, frmListOrders, frmAbout, frmInputDelivery,
        frmListFamily, frmListItems, frmListVats, frmListBase, frmInputConfiguration;
 
 {$R *.dfm}
@@ -70,7 +70,10 @@ begin
   ACT_LIST_ITEMS    : TformListItems.ShowList(mdMaj, id);
   ACT_LIST_VATS     : TFormListVats.ShowList(mdMaj, id);
   ACT_ORDERS        : TformListOrders.ShowList(mdMaj, id);
-  ACT_DELIVERIES    : ;
+  ACT_DELIVERIES    : if TformListOrders.ShowList(mdSelection, id) then
+                      begin
+                        TformInputDelivery.Execute(id);
+                      end;
   ACT_CONFIGURATION : TformInputConfiguration.Execute;
   ACT_CLOSE         : Close;
   ACT_ABOUT         : TformAbout.Execute;

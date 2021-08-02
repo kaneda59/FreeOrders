@@ -30,7 +30,8 @@ uses
   module.orders in 'classes\module.orders.pas',
   frmAbout in 'views\frmAbout.pas' {formAbout},
   configuration in 'classes\configuration.pas',
-  frmInputConfiguration in 'views\frmInputConfiguration.pas' {formInputConfiguration};
+  frmInputConfiguration in 'views\frmInputConfiguration.pas' {formInputConfiguration},
+  frmInputDelivery in 'views\orders\frmInputDelivery.pas' {formInputDelivery};
 
 {$R *.res}
 
