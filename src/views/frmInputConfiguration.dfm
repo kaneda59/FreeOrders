@@ -72,6 +72,7 @@ inherited formInputConfiguration: TformInputConfiguration
             Cursor = crHandPoint
             Caption = 'Exporter'
             TabOrder = 0
+            OnClick = btnExportClick
           end
           object btnImport: TButton
             Left = 183
@@ -81,6 +82,7 @@ inherited formInputConfiguration: TformInputConfiguration
             Cursor = crHandPoint
             Caption = 'Importer'
             TabOrder = 1
+            OnClick = btnImportClick
           end
         end
       end

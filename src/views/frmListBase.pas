@@ -61,10 +61,14 @@ procedure TFormBaseList.btnSearchClick(Sender: TObject);
 var i: integer;
 begin
   inherited;
+  if edtSearch.Text<>'' then
   for i := 0 to qryList.FieldCount-1 do
   try
-    if qryList.Locate(qryList.Fields[0].FieldName, edtSearch.Text, [loPartialKey, loCaseInsensitive]) then
+    if qryList.Locate(qryList.Fields[i].FieldName, edtSearch.Text, [loPartialKey, loCaseInsensitive]) then
+    begin
+      dbgrd.SetFocus;
       Break;
+    end;
   except
   end;
 end;

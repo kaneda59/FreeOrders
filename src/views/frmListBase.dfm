@@ -1,4 +1,5 @@
 inherited FormBaseList: TFormBaseList
+  ActiveControl = edtSearch
   Caption = 'FormBaseList'
   ClientHeight = 414
   ClientWidth = 618

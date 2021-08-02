@@ -23,6 +23,8 @@ type
     procedure btnSelectFileClick(Sender: TObject);
     procedure btnTestClick(Sender: TObject);
     procedure edtFileDataBaseNameChange(Sender: TObject);
+    procedure btnExportClick(Sender: TObject);
+    procedure btnImportClick(Sender: TObject);
   private
     { Déclarations privées }
     procedure ReadScreen;
@@ -38,9 +40,63 @@ var
 implementation
 
 {$R *.dfm}
-  uses Logs, consts_, configuration;
+  uses Logs, consts_, configuration, Module;
 
 { TformInputConfiguration }
+
+procedure TformInputConfiguration.btnExportClick(Sender: TObject);
+begin
+  inherited;
+  if MessageDlg('voulez-vous exporter la base de données ?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  with TSaveDialog.Create(nil) do
+  try
+    Title:= 'choisir l''emplacement de la sauvegarde';
+    Filter:= 'fichier base de données (*.db; *.sqlite)|*.db;*.sqlite|Tous fichiers (*.*)|*.*';
+    InitialDir:= '';
+    DefaultExt:= ExtractFileExt(configfile.connection.parameters.Values['filename']);
+    Filename:= ExtractFileName(ChangeFileExt(configfile.connection.parameters.Values['filename'], FormatDateTime('.ddmmyyyy', Date)));
+    if Execute then
+      CopyFile(Pchar(configfile.connection.parameters.Values['filename']), Pchar(filename), True);
+  finally
+    Free;
+  end;
+end;
+
+procedure TformInputConfiguration.btnImportClick(Sender: TObject);
+begin
+  inherited;
+  if MessageDlg('voulez-vous importer une base de données ?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  with TOpenDialog.Create(nil) do
+  try
+    Title:= 'choisir l''emplacement de la sauvegarde';
+    Filter:= 'fichier base de données (*.db; *.sqlite)|*.db;*.sqlite|Tous fichiers (*.*)|*.*';
+    InitialDir:= '';
+    DefaultExt:= ExtractFileExt(configfile.connection.parameters.Values['filename']);
+    Filename:= ExtractFileName(ChangeFileExt(configfile.connection.parameters.Values['filename'], FormatDateTime('.ddmmyyyy', Date)));
+    if Execute then
+    begin
+      if fileExists(configfile.connection.parameters.Values['filename']) then
+        CopyFile(Pchar(configfile.connection.parameters.Values['filename']), Pchar(ChangeFileExt(configfile.connection.parameters.Values['filename'], '.old')), True);
+      CopyFile(Pchar(filename), Pchar(configfile.connection.parameters.Values['filename']), True);
+      Module.Donnees.connection.Close;
+      try
+        Module.Donnees.connection.ConnectionString:= configfile.connection.fillConnectionString;
+        Module.Donnees.connection.Open;
+        if Module.Donnees.connection.Connected then
+           MessageDlg('La base de données est restaurée', mtInformation, [mbOk], 0);
+      except
+        on e: Exception do
+        begin
+          MessageDlg('impossible de se connecter a cette base de données, la précédente db sera restaurée : ' + e.Message, mtError, [mbOk], 0);
+          CopyFile(Pchar(configfile.connection.parameters.Values['filename']), Pchar(ChangeFileExt(configfile.connection.parameters.Values['filename'], '.err')), True);
+          CopyFile(Pchar(ChangeFileExt(configfile.connection.parameters.Values['filename'], '.old')), Pchar(configfile.connection.parameters.Values['filename']), True);
+        end;
+      end;
+    end;
+  finally
+    Free;
+  end;
+end;
 
 procedure TformInputConfiguration.btnSelectFileClick(Sender: TObject);
 begin
@@ -50,7 +106,7 @@ begin
     Title:= 'Choisir un fichier de base de données';
     Filter:= 'fichier sqlite (*.db;*.sqlite|*.db;*.sqlite|Tous fichiers (*.*)|*.*';
     InitialDir:= ExtractFilePath(configfile.connection.parameters.Values['filename']);
-    DefaultExt:= ExtractFileExt(configfile.connection.parameters.Values['filename']);;
+    DefaultExt:= ExtractFileExt(configfile.connection.parameters.Values['filename']);
     Filename:= ExtractFileName(configfile.connection.parameters.Values['filename']);
     if Execute then
       edtFileDataBaseName.Text:= FileName;
