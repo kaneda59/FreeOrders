@@ -3,7 +3,6 @@ program freeOrders;
 uses
   Vcl.Forms,
   main in 'main.pas' {formMain},
-  Module in 'Module.pas' {Donnees: TDataModule},
   consts_ in 'consts_.pas',
   classebase in 'classes\classebase.pas',
   Logs in 'Logs.pas',
@@ -31,7 +30,8 @@ uses
   frmAbout in 'views\frmAbout.pas' {formAbout},
   configuration in 'classes\configuration.pas',
   frmInputConfiguration in 'views\frmInputConfiguration.pas' {formInputConfiguration},
-  frmInputDelivery in 'views\orders\frmInputDelivery.pas' {formInputDelivery};
+  frmInputDelivery in 'views\orders\frmInputDelivery.pas' {formInputDelivery},
+  Module in 'Module.pas' {Donnees: TDataModule};
 
 {$R *.res}
 

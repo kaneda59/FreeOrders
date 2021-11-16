@@ -3,7 +3,7 @@ unit Module;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes,
+  Windows, System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes,
   System.TypInfo, System.Variants;
 
 
@@ -64,6 +64,7 @@ procedure TDonnees.CreateDataBase;
 begin
   with TStringList.create do
   try
+    outputdebugstring(pchar('create a new database'));
     SaveToFile(filedatabasename);
   finally
     Free;
@@ -82,14 +83,15 @@ end;
 procedure TDonnees.DataModuleCreate(Sender: TObject);
 begin
   if not InitDataBase then
-    MessageDLG('une erreur est survenue lors de l''initialisation de la base de données'#13#10 +
-               'veuillez vérifier les logs',  mtError, [mbOK], 0);
+    outputdebugstring(Pchar('une erreur est survenue lors de l''initialisation de la base de données'#13#10 +
+               'veuillez vérifier les logs'));
 
   FormatSettings.DecimalSeparator:= varToStr(CheckValues(FormatSettings.DecimalSeparator, configfile.settingFormat.Values['DecimalSeparator']))[1];
   FormatSettings.ShortDateFormat := VarToStr(CheckValues(FormatSettings.ShortDateFormat, configfile.settingFormat.Values['ShortDateFormat']));
   FormatSettings.CurrencyString  := VarToStr(CheckValues(FormatSettings.CurrencyString , configfile.settingFormat.Values['CurrencyString']));
   FormatSettings.DateSeparator   := VarToStr(CheckValues(FormatSettings.DateSeparator, configfile.settingFormat.Values['DateSeparator']))[1];
   FormatSettings.TimeSeparator   := varToStr(CheckValues(FormatSettings.TimeSeparator, configfile.settingFormat.Values['TimeSeparator']))[1];
+  outputdebugstring(pchar('end DataModuleCreate'));
 end;
 
 function TDonnees.getLastId(const tableName: string): integer;
@@ -289,6 +291,7 @@ end;
 function TDonnees.InitDataBase: Boolean;
 begin
   result:= False;
+  outputdebugstring(pchar('initialisation base de données'));
   filedatabasename:= configfile.connection.parameters.Values['filename'];// pathData + ChangeFileExt(ExtractFileName(ParamStr(0)), '.db');
   if not FileExists(filedatabasename) then
     CreateDataBase;
@@ -296,6 +299,7 @@ begin
   connection.ConnectionString := configfile.connection.fillConnectionString;//StringReplace(CNX_SQLITE_STR, '[filename]', filedatabasename, [rfReplaceAll]);
   connection.LoginPrompt:= False;
   try
+    outputdebugstring(PChar('tentative de connexion'));
     connection.Open();
     result:= connection.Connected;
 

@@ -12,9 +12,6 @@ inherited FormBaseList: TFormBaseList
   TextHeight = 13
   inherited pnlheader: TPanel
     Width = 618
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 552
     DesignSize = (
       618
       41)
@@ -24,14 +21,15 @@ inherited FormBaseList: TFormBaseList
     end
     inherited lblTitle: TLabel
       Left = 375
+      ExplicitLeft = 375
     end
   end
   inherited state: TStatusBar
     Top = 395
     Width = 618
     ExplicitLeft = 0
-    ExplicitTop = 336
-    ExplicitWidth = 552
+    ExplicitTop = 395
+    ExplicitWidth = 618
   end
   object dbgrd: TDBGrid
     Left = 0
@@ -57,7 +55,6 @@ inherited FormBaseList: TFormBaseList
     Height = 40
     Align = alTop
     TabOrder = 3
-    ExplicitWidth = 552
     object edtSearch: TEdit
       Left = 8
       Top = 8
@@ -126,9 +123,6 @@ inherited FormBaseList: TFormBaseList
     Height = 41
     Align = alBottom
     TabOrder = 4
-    ExplicitLeft = 224
-    ExplicitTop = 208
-    ExplicitWidth = 185
     object btnCancel: TButton
       Left = 88
       Top = 8

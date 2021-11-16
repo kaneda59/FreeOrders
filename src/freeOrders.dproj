@@ -92,11 +92,6 @@
             <Form>formMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Module.pas">
-            <Form>Donnees</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="consts_.pas"/>
         <DCCReference Include="classes\classebase.pas"/>
         <DCCReference Include="Logs.pas"/>
@@ -178,6 +173,11 @@
         <DCCReference Include="views\orders\frmInputDelivery.pas">
             <Form>formInputDelivery</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Module.pas">
+            <Form>Donnees</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

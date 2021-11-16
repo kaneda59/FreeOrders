@@ -44,7 +44,9 @@ implementation
        frmListFamily, frmListItems, frmListVats, frmListBase, frmInputConfiguration;
 
 {$R *.dfm}
-
+/// <summary>
+///  On initialise les tag des menu pour affecter les actions associées à chacun d'entre eux
+/// </summary>
 procedure TformMain.FormCreate(Sender: TObject);
 begin
   mnuclients.Tag      := ACT_LIST_CLIENTS;
@@ -59,6 +61,10 @@ begin
   mnuAbout.Tag        := ACT_ABOUT;
 end;
 
+/// <summary>
+///  tous les menus sont associés à un seul event click et selon le tag du menu passé en paramètre (sender) on
+///  exécute la méthode approprié
+/// </summary>
 procedure TformMain.mnuActionClick(Sender: TObject);
 var id: integer;
 begin
