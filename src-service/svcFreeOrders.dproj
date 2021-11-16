@@ -1,0 +1,199 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BF20DC60-AEC7-40F2-9255-9DF4C0B9EC75}</ProjectGuid>
+        <ProjectVersion>15.3</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <MainSource>svcFreeOrders.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_E>false</DCC_E>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_UsePackage>tmsdXE5;FireDACSqliteDriver;RtmRxDB190;FlexCel_Core;DBXSqliteDriver;FireDACPgDriver;fmx;FDTools;comparerIBX_xe5;IndySystem;frx19;FlexCel_Report;vclib;inetdbbde;DBXInterBaseDriver;RtmRxBDE190;DataSnapCommon;Tee919;TeeUI919;acntDelphiXE5_R;FMXTeeDB919;DbxCommonDriver;VCL_FlexCel_Components;vclimg;dbxcds;TeeGL919;MetropolisUILiveTile;vcldb;vcldsnap;FmxTeeUI919;fmxFireDAC;CustomIPTransport;vclZipForged19;vclribbon;TeeWorld919;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;CodeSiteExpressPkg;TeePro919;FireDACIBDriver;FMXfrxDB19;FMX_FlexCel_Core;inetdbxpress;comparerDBX_xe5;frxe19;adortl;frxDB19;LockBox3DR;FireDACASADriver;AlphaDBDelphiXE5;TeeTree2D19Tee9;FMXTeePro919;comparer_xe5;bindcompfmx;vcldbx;FireDACODBCDriver;DCEF_2010;nrcommd19;rtl;dbrtl;DbxClientDriver;FireDACCommon;bindcomp;dclZipForged19;vclFireDAC;FlexCel_Render;CPortLibDXE;FMXTee919;xmlrtl;svnui;ibxpress;IndyProtocols;DBXMySQLDriver;RtmRxCtl190;comparerBDE_xe5;FireDACCommonDriver;tmsxlsdXE5;soaprtl;bindengine;vclactnband;bindcompdbx;TeeLanguage919;VCL_FlexCel_Core;bindcompvcl;FlexCel_Pdf;vclie;FMX_FlexCel_Components;FireDACADSDriver;vcltouch;VclSmp;FireDAC;VCLRESTComponents;Intraweb;Python_XE7;dsnapcon;inet;FMXTeeLanguage919;fmxobj;FireDACMySQLDriver;FMXfrx19;vclx;svn;tmsexdXE5;TeeDB919;fmxdae;RESTComponents;FlexCel_XlsAdapter;bdertl;TeeImage919;FireDACMSAccDriver;dbexpress;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <DCC_UsePackage>tmsdXE5;FireDACSqliteDriver;FlexCel_Core;DBXSqliteDriver;FireDACPgDriver;fmx;comparerIBX_xe5;IndySystem;FlexCel_Report;vclib;DBXInterBaseDriver;DataSnapCommon;acntDelphiXE5_R;DbxCommonDriver;VCL_FlexCel_Components;vclimg;dbxcds;MetropolisUILiveTile;vcldb;vcldsnap;fmxFireDAC;CustomIPTransport;vclribbon;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;FireDACIBDriver;FMX_FlexCel_Core;inetdbxpress;comparerDBX_xe5;adortl;LockBox3DR;FireDACASADriver;comparer_xe5;bindcompfmx;FireDACODBCDriver;nrcommd19;rtl;dbrtl;DbxClientDriver;FireDACCommon;bindcomp;vclFireDAC;FlexCel_Render;xmlrtl;ibxpress;IndyProtocols;DBXMySQLDriver;comparerBDE_xe5;FireDACCommonDriver;tmsxlsdXE5;soaprtl;bindengine;vclactnband;bindcompdbx;VCL_FlexCel_Core;bindcompvcl;FlexCel_Pdf;vclie;FMX_FlexCel_Components;FireDACADSDriver;vcltouch;VclSmp;FireDAC;VCLRESTComponents;Intraweb;dsnapcon;inet;fmxobj;FireDACMySQLDriver;vclx;tmsexdXE5;fmxdae;RESTComponents;FlexCel_XlsAdapter;FireDACMSAccDriver;dbexpress;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_DcuOutput>..\lib\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>..\bin\$(Platform)\$(Config)</DCC_ExeOutput>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="mainsvc.pas">
+            <Form>ServiceFreeOrders</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TService</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\common\classes\classebase.pas"/>
+        <DCCReference Include="..\common\classes\configuration.pas"/>
+        <DCCReference Include="..\common\classes\module.client.pas"/>
+        <DCCReference Include="..\common\classes\module.family.pas"/>
+        <DCCReference Include="..\common\classes\module.items.pas"/>
+        <DCCReference Include="..\common\classes\module.orders.pas"/>
+        <DCCReference Include="..\common\classes\module.supplier.pas"/>
+        <DCCReference Include="..\common\classes\module.vat.pas"/>
+        <DCCReference Include="..\common\microsvc\intfmsvc.pas"/>
+        <DCCReference Include="..\common\microsvc\json.tools.pas"/>
+        <DCCReference Include="Module.pas">
+            <Form>Donnees</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\common\consts_.pas"/>
+        <DCCReference Include="..\common\Logs.pas"/>
+        <DCCReference Include="implmsvc.tools.pas"/>
+        <DCCReference Include="implmsvc.pas"/>
+        <DCCReference Include="..\common\Tools.pas"/>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">1</VersionInfo>
+                    <VersionInfo Name="MinorVer">0</VersionInfo>
+                    <VersionInfo Name="Release">0</VersionInfo>
+                    <VersionInfo Name="Build">0</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1036</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName"/>
+                    <VersionInfoKeys Name="FileDescription"/>
+                    <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName"/>
+                    <VersionInfoKeys Name="LegalCopyright"/>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename"/>
+                    <VersionInfoKeys Name="ProductName"/>
+                    <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                    <VersionInfoKeys Name="CFBundleName"/>
+                    <VersionInfoKeys Name="CFBundleDisplayName"/>
+                    <VersionInfoKeys Name="UIDeviceFamily"/>
+                    <VersionInfoKeys Name="CFBundleIdentifier"/>
+                    <VersionInfoKeys Name="CFBundleVersion"/>
+                    <VersionInfoKeys Name="CFBundlePackageType"/>
+                    <VersionInfoKeys Name="CFBundleSignature"/>
+                    <VersionInfoKeys Name="CFBundleAllowMixedLocalizations"/>
+                    <VersionInfoKeys Name="UISupportedInterfaceOrientations"/>
+                    <VersionInfoKeys Name="CFBundleExecutable"/>
+                    <VersionInfoKeys Name="CFBundleResourceSpecification"/>
+                    <VersionInfoKeys Name="LSRequiresIPhoneOS"/>
+                    <VersionInfoKeys Name="CFBundleInfoDictionaryVersion"/>
+                    <VersionInfoKeys Name="CFBundleDevelopmentRegion"/>
+                    <VersionInfoKeys Name="package"/>
+                    <VersionInfoKeys Name="label"/>
+                    <VersionInfoKeys Name="versionCode"/>
+                    <VersionInfoKeys Name="versionName"/>
+                    <VersionInfoKeys Name="persistent"/>
+                    <VersionInfoKeys Name="restoreAnyVersion"/>
+                    <VersionInfoKeys Name="installLocation"/>
+                    <VersionInfoKeys Name="largeHeap"/>
+                    <VersionInfoKeys Name="theme"/>
+                </VersionInfoKeys>
+                <Source>
+                    <Source Name="MainSource">svcFreeOrders.dpr</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k190.bpl">Composants Microsoft Office 2000 Sample Automation Server Wrapper</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp190.bpl">Composants Microsoft Office XP Sample Automation Server Wrapper</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Deployment/>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>
