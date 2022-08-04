@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes,
-  System.TypInfo, System.Variants, cli.datas, System.DateUtils, Vcl.ExtCtrls, synCommons;
+  System.TypInfo, System.Variants, System.DateUtils, Vcl.ExtCtrls, synCommons,
+  uniGUIBaseClasses, uniGUIClasses, uniTimer;
 
 
 
@@ -54,12 +55,15 @@ type
     function getLastId(const tableName: string): integer;
   end;
 
+{$IFDEF MASTER}
 var
   Donnees: TDonnees;
+{$ENDIF}
 
 implementation
 
-  uses consts_, logs, configuration, classebase, json.tools, Data.DBXJSON, intfmsvc,
+  uses consts_, logs, configuration, classebase, json.tools, Data.DBXJSON, intfmsvc, Winapi.ActiveX,
+       cli.datas,
        module.vat,
        module.supplier,
        module.items,
@@ -102,14 +106,18 @@ end;
 
 procedure TDonnees.DataModuleCreate(Sender: TObject);
 begin
-  ConnectToServer(True);
-  callback := TMessageService.Create(Client, IMessageService); // abonnement aux notifications
-  Service.Join(myIdentify, callback); // on joint le serveur
-  tmgetToken.Enabled:= True;
+  coInitialize(nil);
+
 
   if not InitDataBase then
     outputdebugstring(Pchar('une erreur est survenue lors de l''initialisation de la base de données'#13#10 +
                'veuillez vérifier les logs'));
+
+  {$IFDEF  MASTER}
+  ConnectToServer(True);
+  tmgetToken.Enabled:= True;
+  tmgetTokenTimer(tmgetToken);
+  {$ENDIF}
 
   FormatSettings.DecimalSeparator:= varToStr(CheckValues(FormatSettings.DecimalSeparator, configfile.settingFormat.Values['DecimalSeparator']))[1];
   FormatSettings.ShortDateFormat := VarToStr(CheckValues(FormatSettings.ShortDateFormat, configfile.settingFormat.Values['ShortDateFormat']));
@@ -122,7 +130,7 @@ end;
 // ajoutée
 procedure TDonnees.TruncateTable(const tableName: string);
 begin
-  with Donnees.addQuery do
+  with addQuery do
   try
     SQL.Add('delete from ' + tableName);
     try
@@ -145,14 +153,6 @@ var recordset  : TJSONArray;
     i          : Integer;
 begin
   recordset :=  TJSONObject.ParseJSONValue(aJSonString) as TJSONArray;
-
-//  with TStringList.Create do
-//  try
-//    Text:= JSONToXML(aJSonString);
-//    SaveToFile(pathTemp + 'vat.xml');
-//  finally
-//    Free;
-//  end;
   if recordset<>nil then
   begin
     TruncateTable('vats');
@@ -392,7 +392,8 @@ begin
     if isByteOn(fct_update, 0) then
     begin
       // récupération des TVA
-      aJSonString:= Service.getListVat(configfile.connection_server.appid, ParamToJSon(global_param));
+      aJSonString:= Service.getListVat(configfile.connection_server.appid,
+                                                ParamToJSon(global_param));
       with JSonToResult(aJSonString) do
       try
         if State='ok' then
@@ -406,7 +407,8 @@ begin
     if isByteOn(fct_update, 1) then
     begin
       // récupération des items
-      aJSonString:= Service.getListItems(configfile.connection_server.appid, ParamToJSon(global_param));
+      aJSonString:= Service.getListItems(configfile.connection_server.appid,
+                                                  ParamToJSon(global_param));
       with JSonToResult(aJSonString) do
       try
         if State='ok' then
@@ -420,7 +422,8 @@ begin
     if isByteOn(fct_update, 2) then
     begin
       // récupération des family
-      aJSonString:= Service.getListFamily(configfile.connection_server.appid, ParamToJSon(global_param));
+      aJSonString:= Service.getListFamily(configfile.connection_server.appid,
+                                                  ParamToJSon(global_param));
       with JSonToResult(aJSonString) do
       try
         if State='ok' then
@@ -434,7 +437,8 @@ begin
     if isByteOn(fct_update, 3) then
     begin
       // récupération des suppliers
-      aJSonString:= Service.getListSuppliers(configfile.connection_server.appid, ParamToJSon(global_param));
+      aJSonString:= Service.getListSuppliers(configfile.connection_server.appid,
+                                                  ParamToJSon(global_param));
       with JSonToResult(aJSonString) do
       try
         if State='ok' then
@@ -448,7 +452,8 @@ begin
     if isByteOn(fct_update, 4) then
     begin
       // récupération des clients
-      aJSonString:= Service.getListCustomers(configfile.connection_server.appid, ParamToJSon(global_param));
+      aJSonString:= Service.getListCustomers(configfile.connection_server.appid,
+                                                  ParamToJSon(global_param));
       with JSonToResult(aJSonString) do
       try
         if State='ok' then
@@ -462,7 +467,8 @@ begin
     if isByteOn(fct_update, 5) then
     begin
       // récupération des orders
-      aJSonString:= Service.getListOrders(configfile.connection_server.appid, ParamToJSon(global_param));
+      aJSonString:= Service.getListOrders(configfile.connection_server.appid,
+                                                  ParamToJSon(global_param));
       with JSonToResult(aJSonString) do
       try
         if State='ok' then
@@ -472,8 +478,6 @@ begin
         Free;
       end;
     end;
-
-
   end;
 end;
 

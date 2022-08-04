@@ -11,7 +11,7 @@ object Donnees: TDonnees
   object tmgetToken: TTimer
     Enabled = False
     OnTimer = tmgetTokenTimer
-    Left = 128
-    Top = 80
+    Left = 104
+    Top = 72
   end
 end

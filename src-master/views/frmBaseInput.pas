@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frmBase, Vcl.ComCtrls, Vcl.StdCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, uniButton, uniLabel, uniGUIBaseClasses, uniGUIClasses, uniPanel;
 
 type
   TformBaseInput = class(TFormBase)

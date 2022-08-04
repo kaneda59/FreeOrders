@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frmBaseInput, Vcl.StdCtrls, classebase, json.tools,//module.supplier,
-  Vcl.ComCtrls, Vcl.ExtCtrls;
+  Vcl.ComCtrls, Vcl.ExtCtrls, uniButton, uniLabel, uniGUIBaseClasses,
+  uniGUIClasses, uniPanel;
 
 type
   TformInputSupplier = class(TformBaseInput)

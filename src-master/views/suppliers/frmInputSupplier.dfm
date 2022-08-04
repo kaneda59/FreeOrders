@@ -2,36 +2,27 @@ inherited formInputSupplier: TformInputSupplier
   Caption = 'formInputSupplier'
   ClientHeight = 519
   ClientWidth = 658
-  OnDestroy = FormDestroy
   ExplicitWidth = 674
   ExplicitHeight = 558
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlheader: TPanel
     Width = 658
-    ExplicitWidth = 658
     inherited lblTitle: TLabel
       Left = 415
-      ExplicitLeft = 415
     end
   end
   inherited state: TStatusBar
     Top = 500
     Width = 658
-    ExplicitTop = 500
-    ExplicitWidth = 658
   end
   inherited pnlBottom: TPanel
     Top = 459
     Width = 658
-    ExplicitTop = 459
-    ExplicitWidth = 658
   end
   inherited pnlBody: TPanel
     Width = 658
     Height = 418
-    ExplicitWidth = 658
-    ExplicitHeight = 418
     object Label1: TLabel
       Left = 85
       Top = 87

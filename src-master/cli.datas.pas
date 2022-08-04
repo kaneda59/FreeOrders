@@ -4,6 +4,9 @@ interface
 
 uses
       {$I SynDprUses.inc}
+      Classes,
+      Forms,
+      Messages,
       Windows,
       System.SysUtils,
       SynCommons,
@@ -18,6 +21,8 @@ const FCT_TVA       =  1;
       FCT_SUPPLIER  =  8;
       FCT_CUSTOMER  = 16;
       FCT_ORDER     = 32;
+
+const WM_NOTIFYEVENT = WM_USER + 1000;
 
 type
       TMessageService = class( TInterfacedCallback, IMessageCallBack)
@@ -50,6 +55,8 @@ var client: TSQLHttpClientWebsockets;
 implementation
 
   uses configuration, Module, main, json.tools, Logs;
+
+
 
 function setObject(const Obj: TObject; const objClass: TClass): Boolean;
 begin
@@ -197,37 +204,38 @@ end;
 procedure TMessageService.NotifyCustomers(const AppID: RawUTF8;
   const ASonString: RawJSON);
 begin
-  postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_CUSTOMER, 0);
+  {$IFDEF MASTER} postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_CUSTOMER, 0); {$ENDIF}
 end;
 
 procedure TMessageService.NotifyFamily(const AppID: RawUTF8;
   const ASonString: RawJSON);
 begin
-  postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_FAMILY, 0);
+   {$IFDEF MASTER} postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_FAMILY, 0); {$ENDIF}
 end;
 
 procedure TMessageService.NotifyItems(const AppID: RawUTF8;
   const ASonString: RawJSON);
 begin
-  postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_ITEM, 0);
+  {$IFDEF MASTER} postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_ITEM, 0); {$ENDIF}
 end;
 
 procedure TMessageService.NotifyOrders(const AppID: RawUTF8;
   const ASonString: RawJSON);
 begin
-  postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_ORDER, 0);
+  {$IFDEF MASTER} postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_ORDER, 0); {$ENDIF}
 end;
 
 procedure TMessageService.NotifySuppliers(const AppID: RawUTF8;
   const ASonString: RawJSON);
 begin
-  postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_SUPPLIER, 0);
+ {$IFDEF MASTER} postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_SUPPLIER, 0); {$ENDIF}
 end;
 
 procedure TMessageService.NotifyVat(const AppID: RawUTF8;
   const ASonString: RawJSON);
 begin
-  postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_TVA, 0);
+ {$IFDEF MASTER} postMessage(main.formMain.Handle, WM_NOTIFYEVENT, FCT_TVA, 0); {$ENDIF}
+ //{$IFDEF UNIGUI} msgIGrow('des données de TVA ont été mise a jour', 'notice'); {$ENDIF}
 end;
 
 function newGUID: string;

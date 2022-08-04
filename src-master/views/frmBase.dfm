@@ -23,9 +23,6 @@ object FormBase: TFormBase
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 56
-    ExplicitTop = 48
-    ExplicitWidth = 185
     DesignSize = (
       552
       41)
@@ -79,8 +76,5 @@ object FormBase: TFormBase
     Width = 552
     Height = 19
     Panels = <>
-    ExplicitLeft = 288
-    ExplicitTop = 192
-    ExplicitWidth = 0
   end
 end
