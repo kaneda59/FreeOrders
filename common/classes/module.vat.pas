@@ -28,12 +28,12 @@ var mVat: TModule_Vat;
 implementation
 
 { TModule_Suppliers }
-  uses module, Logs, consts_;
+  uses Module, Logs, consts_;
 
 constructor TModule_Vat.Create(const id: integer);
 begin
   fVat:= TVat.Create;
-  qry:= module.Donnees.addQuery;
+  qry:= Donnees.addQuery;
   fIsEmpty:= True;
   fid:= id;
 end;

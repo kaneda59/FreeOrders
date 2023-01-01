@@ -1,16 +1,10 @@
 inherited formInputConfiguration: TformInputConfiguration
-  Caption = 'formInputConfiguration'
+  Caption = 'Configuration'
   ExplicitWidth = 568
   ExplicitHeight = 394
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnlBottom: TPanel
-    ExplicitLeft = 0
-    ExplicitTop = 295
-    ExplicitWidth = 552
-  end
   inherited pnlBody: TPanel
-    ExplicitTop = 41
     object pgConfig: TPageControl
       Left = 1
       Top = 1
@@ -22,8 +16,6 @@ inherited formInputConfiguration: TformInputConfiguration
       object tsmORMot: TTabSheet
         Caption = 'APIs'
         ImageIndex = 2
-        ExplicitLeft = 6
-        ExplicitTop = 23
         object lblHost: TLabel
           Left = 52
           Top = 67

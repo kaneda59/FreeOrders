@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{67C2F573-EA15-4D9C-8ECF-AF1033C22E75}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="freeOrders_unigui.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\src-service\svcFreeOrders.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="freeOrders_unigui">
+        <MSBuild Projects="freeOrders_unigui.dproj"/>
+    </Target>
+    <Target Name="freeOrders_unigui:Clean">
+        <MSBuild Projects="freeOrders_unigui.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="freeOrders_unigui:Make">
+        <MSBuild Projects="freeOrders_unigui.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="svcFreeOrders">
+        <MSBuild Projects="..\src-service\svcFreeOrders.dproj"/>
+    </Target>
+    <Target Name="svcFreeOrders:Clean">
+        <MSBuild Projects="..\src-service\svcFreeOrders.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="svcFreeOrders:Make">
+        <MSBuild Projects="..\src-service\svcFreeOrders.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="freeOrders_unigui;svcFreeOrders"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="freeOrders_unigui:Clean;svcFreeOrders:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="freeOrders_unigui:Make;svcFreeOrders:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

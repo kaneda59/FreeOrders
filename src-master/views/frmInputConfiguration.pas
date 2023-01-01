@@ -152,6 +152,7 @@ class function TformInputConfiguration.Execute: Boolean;
 begin
   Application.CreateForm(TformInputConfiguration, formInputConfiguration);
   try
+    formInputConfiguration.TitleForm:= 'Configuration ';
     formInputConfiguration.WriteScreen;
     result:= formInputConfiguration.ShowModal = mrOk;
     if result then

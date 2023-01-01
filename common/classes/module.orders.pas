@@ -28,12 +28,12 @@ var mOrders: TModule_Orders;
 implementation
 
 { TModule_Suppliers }
-  uses module, Logs, consts_;
+  uses Module, Logs, consts_;
 
 constructor TModule_orders.Create(const id: integer);
 begin
   fOrders:= TOrders.Create;
-  qry:= module.Donnees.addQuery;
+  qry:= Donnees.addQuery;
   fid:= id;
   fIsEmpty:= True;
 end;

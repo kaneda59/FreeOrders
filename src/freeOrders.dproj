@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{2E9D06EF-BBB4-46D0-B54E-E2CB5A601BB1}</ProjectGuid>
-        <ProjectVersion>15.3</ProjectVersion>
+        <ProjectVersion>19.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>freeOrders.dpr</MainSource>
         <Base>True</Base>
@@ -49,6 +49,7 @@
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
+        <SanitizedProjectName>freeOrders</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>tmsdXE5;FireDACSqliteDriver;RtmRxDB190;FlexCel_Core;DBXSqliteDriver;FireDACPgDriver;fmx;FDTools;comparerIBX_xe5;IndySystem;frx19;FlexCel_Report;vclib;inetdbbde;DBXInterBaseDriver;RtmRxBDE190;DataSnapCommon;Tee919;TeeUI919;acntDelphiXE5_R;FMXTeeDB919;DbxCommonDriver;VCL_FlexCel_Components;vclimg;dbxcds;TeeGL919;MetropolisUILiveTile;vcldb;vcldsnap;FmxTeeUI919;fmxFireDAC;CustomIPTransport;vclZipForged19;vclribbon;TeeWorld919;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;CodeSiteExpressPkg;TeePro919;FireDACIBDriver;FMXfrxDB19;FMX_FlexCel_Core;inetdbxpress;comparerDBX_xe5;frxe19;adortl;frxDB19;LockBox3DR;FireDACASADriver;AlphaDBDelphiXE5;TeeTree2D19Tee9;FMXTeePro919;comparer_xe5;bindcompfmx;vcldbx;FireDACODBCDriver;DCEF_2010;nrcommd19;rtl;dbrtl;DbxClientDriver;FireDACCommon;bindcomp;dclZipForged19;vclFireDAC;FlexCel_Render;CPortLibDXE;FMXTee919;xmlrtl;svnui;ibxpress;IndyProtocols;DBXMySQLDriver;RtmRxCtl190;comparerBDE_xe5;FireDACCommonDriver;tmsxlsdXE5;soaprtl;bindengine;vclactnband;bindcompdbx;TeeLanguage919;VCL_FlexCel_Core;bindcompvcl;FlexCel_Pdf;vclie;FMX_FlexCel_Components;FireDACADSDriver;vcltouch;VclSmp;FireDAC;VCLRESTComponents;Intraweb;Python_XE7;dsnapcon;inet;FMXTeeLanguage919;fmxobj;FireDACMySQLDriver;FMXfrx19;vclx;svn;tmsexdXE5;TeeDB919;fmxdae;RESTComponents;FlexCel_XlsAdapter;bdertl;TeeImage919;FireDACMSAccDriver;dbexpress;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
@@ -56,10 +57,15 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>tmsdXE5;FireDACSqliteDriver;FlexCel_Core;DBXSqliteDriver;FireDACPgDriver;fmx;comparerIBX_xe5;IndySystem;FlexCel_Report;vclib;DBXInterBaseDriver;DataSnapCommon;acntDelphiXE5_R;DbxCommonDriver;VCL_FlexCel_Components;vclimg;dbxcds;MetropolisUILiveTile;vcldb;vcldsnap;fmxFireDAC;CustomIPTransport;vclribbon;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;FireDACIBDriver;FMX_FlexCel_Core;inetdbxpress;comparerDBX_xe5;adortl;LockBox3DR;FireDACASADriver;comparer_xe5;bindcompfmx;FireDACODBCDriver;nrcommd19;rtl;dbrtl;DbxClientDriver;FireDACCommon;bindcomp;vclFireDAC;FlexCel_Render;xmlrtl;ibxpress;IndyProtocols;DBXMySQLDriver;comparerBDE_xe5;FireDACCommonDriver;tmsxlsdXE5;soaprtl;bindengine;vclactnband;bindcompdbx;VCL_FlexCel_Core;bindcompvcl;FlexCel_Pdf;vclie;FMX_FlexCel_Components;FireDACADSDriver;vcltouch;VclSmp;FireDAC;VCLRESTComponents;Intraweb;dsnapcon;inet;fmxobj;FireDACMySQLDriver;vclx;tmsexdXE5;fmxdae;RESTComponents;FlexCel_XlsAdapter;FireDACMSAccDriver;dbexpress;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -73,10 +79,11 @@
         <DCC_DcuOutput>..\lib\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>..\bin\$(Platform)\$(Config)</DCC_ExeOutput>
         <Icon_MainIcon>..\assets\icons8_Product.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=LeBonPLan.com;FileDescription=application de démonstration - morMot&amp;Delphi;FileVersion=1.0.0.0;InternalName=freeOrders;LegalCopyright=Kaneda;LegalTrademarks=FDevelopment LTD;OriginalFilename=freeOrders.exe;ProductName=freeOrders;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=LeBonPLan.com;FileDescription=application de démonstration - morMot&amp;Delphi;FileVersion=1.0.0.0;InternalName=freeOrders;LegalCopyright=Kaneda;LegalTrademarks=FDevelopment LTD;OriginalFilename=freeOrders.exe;ProductName=freeOrders;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -179,15 +186,15 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <BuildConfiguration Include="Release">
-            <Key>Cfg_2</Key>
-            <CfgParent>Base</CfgParent>
-        </BuildConfiguration>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
@@ -254,7 +261,7 @@
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp190.bpl">Composants Microsoft Office XP Sample Automation Server Wrapper</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
-            <Deployment/>
+            <Deployment Version="3"/>
             <Platforms>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
@@ -264,4 +271,5 @@
     </ProjectExtensions>
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
 </Project>

@@ -25,7 +25,6 @@ inherited formInputOrders: TformInputOrders
   inherited pnlBottom: TPanel
     Top = 480
     Width = 779
-    ExplicitLeft = 0
     ExplicitTop = 480
     ExplicitWidth = 779
   end
@@ -49,8 +48,8 @@ inherited formInputOrders: TformInputOrders
         Caption = ' Ent'#234'te '
         TabOrder = 0
         object lblState: TLabel
-          Left = 673
-          Top = 16
+          Left = 678
+          Top = 20
           Width = 81
           Height = 23
           Alignment = taRightJustify

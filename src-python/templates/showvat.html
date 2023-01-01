@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ title }}</title>       
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/static/assets/css/noscript.css" /></noscript>
+    </head>
+    <body>
+            <section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="">Bienvenue</a></li>
+							<li><a href="./vat">TVAs</a></li>
+							<li><a href="">Produits</a></li>
+							<li><a href="">Fournisseurs</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+<div id="wrapper">
+        <h2>TVA</h2><br/> 
+
+        
+        <table>
+             <tr>
+                <th>ID</th>
+                <th>Libellé</th>
+                <th>Valeur</th>
+             </tr>             
+             {% for vat in vats %}
+             <tr>
+                 <form action="{{ url_for('traitment') }}" method="POST">
+                 <td><input type="text" name="ID" id="ID" value="{{ vat._id }}" readonly></td>
+                 <td>{{ vat._label }}</td>
+                 <td>{{ vat._value }}</td>
+                 <td><input type="submit" name="valid" id="valid" value="editer"></td>
+                 </form>
+             </tr>
+             {% endfor %}
+        </table>
+</div>
+        
+
+        <!-- Footer -->
+		<footer id="footer" class="wrapper style1-alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="https://www.fdevelopment.eu">FDevelopment LTD</a></li>
+				</ul>
+			</div>
+		</footer>        
+
+
+        <!-- Scripts -->
+			<script src="/static/assets/js/jquery.min.js"></script>
+			<script src="/static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/static/assets/js/browser.min.js"></script>
+			<script src="/static/assets/js/breakpoints.min.js"></script>
+			<script src="/static/assets/js/util.js"></script>
+			<script src="/static/assets/js/main.js"></script>
+    </body>
+</html>

@@ -28,12 +28,12 @@ var mFamily: TModule_Family;
 implementation
 
 { TModule_Suppliers }
-  uses module, Logs, consts_;
+  uses Module, Logs, consts_;
 
 constructor TModule_Family.Create(const id: integer);
 begin
   fFamily:= TFamily.Create;
-  qry:= module.Donnees.addQuery;
+  qry:= Donnees.addQuery;
   fid:= id;
   fIsEmpty:= True;
 end;

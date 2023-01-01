@@ -12,7 +12,6 @@ type
    TMessageService = class(TInterfacedObject, IMessageService)
    protected
      fConnected: array of IMessageCallBack; // tableau de client
-   private
    public
      procedure Join(const AppID: string; const callBack: IMessageCallBack); // méthode mon interface de connexion
 
@@ -31,6 +30,9 @@ type
      function  getOrder(const AppID: RawUTF8; const AJSonString: RawUTF8): RAWJSON;
      function  getListOrders(const AppID: RawUTF8; const AJSonString: RawUTF8): RAWJSON;
      function  getConfiguration(const AppID: RawUTF8; const AJSonString: RawUTF8): RawJSON;
+
+     // permet de faire des select
+     function getSQL(const AppID: RawUTF8; const AJSonString: RawUTF8): RawJSON;
 
      // requête de mise à jour d'information
      procedure setVat(const AppID: RawUTF8; const AJSonString: RawUTF8; const information: RawUTF8);
@@ -68,6 +70,11 @@ implementation
 
 
 procedure ActiveServer(const active: boolean);
+var svn: string;
+    psn: string;
+    prefix: string;
+    IPHeader: string;
+    ConnIDHeader: string;
 begin
   with TSQLLog.Family do
   begin
@@ -84,11 +91,18 @@ begin
       Server.CreateMissingTables();
       Server.ServiceDefine(TMessageService,[IMessageService],sicShared).
       SetOptions([],[optExecLockedPerInterface]). // thread-safe fConnected[]
+
       ByPassAuthentication := true;
+
 
       HttpServer := TSQLHttpServer.Create(REMOTE_PORT,[Server],'+',useBidirSocket);
       HttpServer.AccessControlAllowOrigin:= '*';
-      HttpServer.WebSocketsEnable(Server, TRANSMISSION). Settings.SetFullLog;
+      with  HttpServer.WebSocketsEnable(Server, TRANSMISSION) do
+      begin
+        Settings.SetFullLog;
+        psn:= ProcessName;  // root
+      end;
+//      HttpServer.AddUrlWebSocket('whatever', '8888', False, 'localhost');
     end
     else
     begin
@@ -105,7 +119,8 @@ end;
 procedure TMessageService.CallBackReleased(const callBack: IInvokable;
   const interfaceName: RawUTF8);
 begin
-
+  if interfaceName='IMessageCallBack' then
+    InterfaceArrayDelete(fConnected,callback);
 end;
 
 function TMessageService.deleteCustomer(const AppID, AJSonString: RawUTF8): RawJSON;
@@ -756,6 +771,76 @@ begin
     on e: Exception do
      OutputDebugString(pchar('erreur ' + AppID + ' : ' + AJSonString + ' --> ' + e.Message));
   end;
+end;
+
+function TMessageService.getSQL(const AppID: RawUTF8; const AJSonString: RawUTF8): RawJSON;
+var iv: TParamInformation;
+    rv: TResultInformation;
+    md: TModule_Vat;
+    res: RawJSON;
+    aJsonValue: string;
+    i: integer;
+    js: string;
+begin
+ OutputdebugString(pchar('getListVat.reception ' + AppId + ' : ' + AJSonString));
+ res:= '[';
+ try
+   iv := TParamInformation.Create;
+   rv := TResultInformation.Create;
+   try
+     // on récupère les informations passées en paramètres (envoyées par le client)
+     iv:= JSonToParam(AJSonString);
+     if isTokenValid(AppID, iv.token) then
+     begin
+       with Donnees.addQuery do
+       try
+         SQL.Add(iv.information);
+         try
+           Open;
+           AJsonValue:= '[';
+           while not Eof do
+           begin
+             js:= '{';
+             for i := 0 to Fields.Count-1 do
+             begin
+               js := js + '"' + Fields[i].FieldName + '":"' + Fields[i].AsString + '",';
+             end;
+             if Length(js)>1 then
+               System.delete(js, Length(js), 1);
+             AJsonValue:= AJsonValue + js + '},';
+             Next;
+           end;
+           Close;
+           if AJsonValue[length(AJsonValue)]=',' then
+             System.delete(AJsonValue, Length(AJsonValue), 1);
+           AJsonValue := AJsonValue + ']';
+           rv.State:= 'ok';
+           rv.response := aJsonValue;
+         except
+           on e: Exception do
+           begin
+             rv.State:= 'error';
+             rv.Response:= '{"information":"erreur sql : ' + e.Message + '"}';
+           end;
+         end;
+       finally
+         Free;
+       end;
+     end;
+   finally
+     FreeAndNil(iv);
+
+   end;
+ except
+   on e: Exception do
+   begin
+     rv.State:= 'error';
+     rv.Response:= '{"information":"erreur sql : ' + e.Message + '"}';
+     OutputDebugString(pchar('erreur ' + AppID + ' : ' + AJSonString + ' --> ' + e.Message));
+   end;
+ end;
+ result:= resultToJSon(rv);
+ FreeAndNil(rv);
 end;
 
 function TMessageService.getListVat(const AppID: RawUTF8; const AJSonString: RawUTF8): RawJSON;
@@ -1413,6 +1498,9 @@ begin
     on e: Exception do
      OutputDebugString(pchar('erreur ' + AppID + ' : ' + AJSonString + ' --> ' + e.Message));
   end;
+
+  //result:= resultToJSon(rv);
+
 end;
 
 initialization

@@ -28,12 +28,12 @@ var mclient: TModule_Client;
 implementation
 
 { TModule_Client }
-  uses module, Logs, consts_;
+  uses Module, Logs, consts_;
 
 constructor TModule_Client.Create(const id: integer);
 begin
   fClient:= TClient.Create;
-  qry:= module.Donnees.addQuery;
+  qry:=  Donnees.addQuery;
   fid:= id;
   fIsEmpty:= True;
 end;

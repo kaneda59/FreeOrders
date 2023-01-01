@@ -39,6 +39,9 @@ type
        function  getListOrders(const AppID: RawUTF8; const AJSonString: RawUTF8): RAWJSON;
        function  getConfiguration(const AppID: RawUTF8; const AJSonString: RawUTF8): RawJSON;
 
+       // requête SQL
+       function getSQL(const AppID: RawUTF8; const AJSonString: RawUTF8): RawJSON;
+
        // requête de mise à jour d'information
        procedure setVat(const AppID: RawUTF8; const AJSonString: RawUTF8; const information: RawUTF8);
        procedure setItem(const AppID: RawUTF8; const AJSonString: RawUTF8; const information: RawUTF8);
@@ -64,7 +67,10 @@ const TRANSMISSION = 'E84029D8-1CF6-43EB-A689-EF6B55D2A721';
 
 implementation
 
+  uses ActiveX;
+
 initialization
+    coInitialize(nil);
     TInterfaceFactory.RegisterInterfaces([TypeInfo(IMessageService), TypeInfo(IMessageCallBack)]);
 
 end.

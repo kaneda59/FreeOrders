@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ title }}</title>       
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/static/assets/css/noscript.css" /></noscript>
+    </head>
+    <body>
+
+        <section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="">Bienvenue</a></li>
+							<li><a href="./vat">TVAs</a></li>
+							<li><a href="">Produits</a></li>
+							<li><a href="">Fournisseurs</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+        <div id="wrapper">
+        <h2>TVA</h2><br/> 
+
+<form action="{{ url_for('saivat') }}" method="POST">
+    <div class="row gtr-uniform">
+        <div class="col-6 col-12-xsmall">
+            <label for="LABEL">identifiant</label>
+            <input type="text" name="ID" id="ID" value="{{ tva._id }}"><br/>
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <label for="LABEL">libellé</label>
+            <input type="text" name="LABEL" id="LABEL" value="{{ tva._label }}"><br/>                    
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <label for="VALUE">valeur</label>
+            <input type="text" name="VALUE" id="VALUE" value="{{ tva._value }}"><br/>                    
+        </div>
+        <div class="col-12">
+			<ul class="actions">
+				<li><input type="submit" value="valid" class="primary" /></li>
+				<li><input type="reset" value="Reset" /></li>
+			</ul>
+		</div>
+    </div>
+</form><br/>
+</div>
+
+        <!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="https://www.fdevelopment.eu">FDevelopment LTD</a></li>
+					</ul>
+				</div>
+			</footer>
+
+        <!-- Scripts -->
+			<script src="/static/assets/js/jquery.min.js"></script>
+			<script src="/static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/static/assets/js/browser.min.js"></script>
+			<script src="/static/assets/js/breakpoints.min.js"></script>
+			<script src="/static/assets/js/util.js"></script>
+			<script src="/static/assets/js/main.js"></script>
+    </body>
+</html>

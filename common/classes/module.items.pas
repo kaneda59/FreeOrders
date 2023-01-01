@@ -28,12 +28,12 @@ var mItems: TModule_Items;
 implementation
 
 { TModule_Suppliers }
-  uses module, Logs, consts_;
+  uses Module, Logs, consts_;
 
 constructor TModule_items.Create(const id: integer);
 begin
   fItems:= TItems.Create;
-  qry:= module.Donnees.addQuery;
+  qry:= Donnees.addQuery;
   fid:= id;
   fIsEmpty:= True;
 end;

@@ -8,16 +8,17 @@ inherited formListOrders: TformListOrders
   TextHeight = 13
   inherited pnlheader: TPanel
     Width = 843
-    ExplicitWidth = 618
+    ExplicitWidth = 843
     inherited lblTitle: TLabel
       Left = 600
+      ExplicitLeft = 600
     end
   end
   inherited state: TStatusBar
     Top = 466
     Width = 843
-    ExplicitTop = 395
-    ExplicitWidth = 618
+    ExplicitTop = 466
+    ExplicitWidth = 843
   end
   inherited dbgrd: TDBGrid
     Width = 843
@@ -25,16 +26,16 @@ inherited formListOrders: TformListOrders
   end
   inherited pnlSearch: TPanel
     Width = 843
-    ExplicitWidth = 618
+    ExplicitWidth = 843
     inherited pnlRight: TPanel
       Left = 593
+      ExplicitLeft = 593
     end
   end
   inherited pnlBottom: TPanel
     Top = 425
     Width = 843
-    ExplicitLeft = 0
-    ExplicitTop = 354
-    ExplicitWidth = 618
+    ExplicitTop = 425
+    ExplicitWidth = 843
   end
 end

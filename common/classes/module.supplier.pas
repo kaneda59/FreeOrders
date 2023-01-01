@@ -28,12 +28,12 @@ var mSupplier: TModule_Suppliers;
 implementation
 
 { TModule_Suppliers }
-  uses module, Logs, consts_;
+  uses Module, Logs, consts_;
 
 constructor TModule_Suppliers.Create(const id: integer);
 begin
   fSuppliers:= TSupplier.Create;
-  qry:= module.Donnees.addQuery;
+  qry:= Donnees.addQuery;
   fid:= id;
   fIsEmpty:= True;
 end;

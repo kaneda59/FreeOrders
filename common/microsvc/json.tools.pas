@@ -12,7 +12,9 @@ unit json.tools;
 
 interface
 
-uses System.SysUtils, Classes, classebase, System.Variants, synCommons, DB, consts_, Datasnap.DBClient;
+uses System.SysUtils, Classes, classebase, System.Variants, synCommons, DB,
+     consts_, Datasnap.DBClient;
+
 
       function ParamToJSon(aClasse: TParamInformation): RawJSON;
       function JSonToParam(AJSonString: RawJSON): TParamInformation;
@@ -77,6 +79,7 @@ begin
 
   Result.id:= v.id;
   Result.token:= v.token;
+  Result.information:= v.information;
 end;
 
 function ResultToJSon(aClasse: TResultInformation): RawJSON;

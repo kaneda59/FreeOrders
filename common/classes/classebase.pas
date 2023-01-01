@@ -10,11 +10,11 @@ type
      private
        Fid: integer;
        ftoken: RAWUTF8;
-       finformation: RawJSON;
+       finformation: RawUTF8;
      published
        property id: integer read fId write FId;
        property token: RAWUTF8 read ftoken write ftoken;
-       property information: RawJSON read finformation write finformation;
+       property information: RawUTF8 read finformation write finformation;
      end;
 
      TResultInformation = class(TPersistentWithCustomCreate)
